@@ -1,8 +1,10 @@
+import LoginTemplate from "../components/templates/LoginTemplate";
+
 const LoginPage = () => {
   return (
-    <div>
-      <h1>LoginPage</h1>
-    </div>
+    <>
+      <LoginTemplate />
+    </>
   );
 };
 
