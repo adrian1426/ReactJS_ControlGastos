@@ -14,7 +14,7 @@ const LoginTemplate = () => {
         <p>Toma el control de tus gastos e ingresos</p>
 
         <ContainerBtn>
-          <Button></Button>
+          <Button>Mi boton</Button>
         </ContainerBtn>
       </div>
     </Container>
