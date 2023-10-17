@@ -3,13 +3,13 @@ import styled from "styled-components";
 import Icon from "../atoms/Icon";
 
 const Button = (props) => {
-  const { functionClick, bgColor, icon, children } = props;
+  const { functionClick, bgcolor, icon, children } = props;
 
   return (
     <ButtonStyled
       type="submit"
       onClick={functionClick}
-      bgColor={bgColor}
+      bgcolor={bgcolor}
     >
       <Icon>{icon}</Icon>
       <span className="btn">
@@ -30,7 +30,7 @@ const ButtonStyled = styled.button`
   background-color: initial;
 
   .btn{
-    background: ${(props) => props.bgColor};
+    background: ${(props) => props.bgcolor};
     padding: 0.6em 1.3em;
     font-weight: 900;
     font-size: 18px;
@@ -55,7 +55,7 @@ const ButtonStyled = styled.button`
 
 Button.propTypes = {
   functionClick: PropTypes.func,
-  bgColor: PropTypes.any,
+  bgcolor: PropTypes.string,
   icon: PropTypes.element,
   children: PropTypes.node
 }

@@ -12,10 +12,13 @@ const LoginTemplate = () => {
         </div>
 
         <Title>Control de gastos</Title>
-        <p>Toma el control de tus gastos e ingresos</p>
+        <p className='phrase'>Toma el control de tus gastos e ingresos</p>
 
         <ContainerBtn>
-          <Button icon={<v.iconogoogle />}>
+          <Button
+            bgcolor={v.colorSecundario}
+            icon={<v.iconogoogle />}
+          >
             Iniciar con google
           </Button>
         </ContainerBtn>
@@ -54,6 +57,11 @@ const Container = styled.div`
         max-width: 60%;
         animation: flotar 1.5s ease-in-out infinite alternate;
       }
+    }
+
+    .phrase{
+      color: #909090;
+      font-size: 1.2rem;
     }
   }
 
