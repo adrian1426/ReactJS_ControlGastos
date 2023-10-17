@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Button from '../molecules/Button';
+import { v } from '../../styles/variables';
 
 const LoginTemplate = () => {
   return (
@@ -14,7 +15,9 @@ const LoginTemplate = () => {
         <p>Toma el control de tus gastos e ingresos</p>
 
         <ContainerBtn>
-          <Button>Mi boton</Button>
+          <Button icon={<v.iconogoogle />}>
+            Iniciar con google
+          </Button>
         </ContainerBtn>
       </div>
     </Container>
