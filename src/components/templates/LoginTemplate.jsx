@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import Button from '../molecules/Button';
 import { v } from '../../styles/variables';
+import { useAuthStore } from '../../store/AuthStore';
 
 const LoginTemplate = () => {
+  const { signInWithGoogle } = useAuthStore();
+
   return (
     <Container>
       <div className='contentCard'>
@@ -18,6 +21,7 @@ const LoginTemplate = () => {
           <Button
             bgcolor={v.colorSecundario}
             icon={<v.iconogoogle />}
+            functionClick={signInWithGoogle}
           >
             Iniciar con google
           </Button>
