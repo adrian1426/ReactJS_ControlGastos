@@ -5,7 +5,7 @@ const ProtectedRoute = (props) => {
   const { user, redirectTo, children } = props;
 
   if (user === null) {
-    <Navigate replace to={redirectTo} />
+    return < Navigate replace to={redirectTo} />
   }
 
   return children ? children : <Outlet />;
