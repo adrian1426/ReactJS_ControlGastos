@@ -5,6 +5,7 @@ import AppRoutes from "./routers/AppRoutes";
 import styled from 'styled-components';
 import Sidebar from './components/organisms/sidebar/Sidebar';
 import { device } from './styles/breakpoints';
+import Menu from './components/organisms/menu/Menu';
 
 function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -14,8 +15,13 @@ function App() {
       <ThemeProvider>
         <AuthContextProvider>
           <Container>
+            <div className="sidebar">
+              <Sidebar />
+            </div>
 
-            <Sidebar />
+            <div className="menu-hamburger">
+              <Menu />
+            </div>
 
             <Body>
               <AppRoutes />
@@ -31,9 +37,28 @@ function App() {
 const Container = styled.div`
   display: grid; 
   grid-template-columns: 1fr;
+  background: ${(props) => props.theme.bgtotal};
+
+  .sidebar{
+    display: none;
+  }
+
+  .menu-hamburger{
+      display: block;
+      position: absolute;
+      left: 20px;
+  }
 
   @media ${device.tablet}{
     grid-template-columns: 65px 1fr;
+
+    .sidebar{
+    display: initial;
+    }
+
+    .menu-hamburger{
+      display: none;
+    }
   }
 `;
 
