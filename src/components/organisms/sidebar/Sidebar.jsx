@@ -20,10 +20,12 @@ const Sidebar = (props) => {
 
         {
           LinksArray.map((link) => (
-            <NavLink key={link.label} to={link.to}>
-              <div className="link-icon">{<link.icon />}</div>
-              <span>{link.label}</span>
-            </NavLink>
+            <div key={link.label} className={openSidebar ? "LinkContainer active" : "LinkContainer"}>
+              <NavLink to={link.to} className={({ isActive }) => `Link${isActive ? ' active' : ''}`}>
+                <div className="link-icon">{<link.icon />}</div>
+                <span>{link.label}</span>
+              </NavLink>
+            </div>
           ))
         }
 
@@ -67,6 +69,48 @@ const Container = styled.div`
 
   h2{
     display: ${(props) => (props.opensidebar ? `block` : `none`)}
+  }
+
+  .LinkContainer{
+    margin: 5px 0;
+    transition: all 0.3s;
+    padding: 0 5%;
+    position: relative;
+    &:hover{
+      background: ${(props) => props.theme.bgAlpha};
+    }
+
+    .Link{
+      display: flex;
+      align-items:center;
+      text-decoration: none;
+      padding:calc(${v.smSpacing} - 2px) 0;
+      color: ${(props) => props.theme.text};
+      height: 60px;
+
+      .link-icon{
+        padding: ${v.smSpacing} ${v.mdSpacing};
+        display: flex;
+
+        svg{
+          font-size:25px;
+        }
+      }
+
+      &.active{
+        &::before{
+        content:"";
+        position: absolute;
+        height: 100%;
+        background: ${(props) => props.theme.bg5};
+        width: 4px;
+        border-radius: 10px;
+        left:0;
+        }
+
+        color: ${(props) => props.theme.bg5};
+      }
+    }
   }
   
   @keyframes flotar {
