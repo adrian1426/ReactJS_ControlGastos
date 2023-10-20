@@ -9,7 +9,7 @@ const HomePage = () => {
     <div>
       <h1>HomePage {user.full_name}</h1>
       <img src={user.picture} alt="" />
-      <hr />
+      <br />
       <button onClick={signOut}>Salir</button>
     </div>
   );

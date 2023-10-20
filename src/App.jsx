@@ -16,7 +16,10 @@ function App() {
         <AuthContextProvider>
           <Container>
             <div className="sidebar">
-              <Sidebar />
+              <Sidebar
+                openSidebar={openSidebar}
+                setOpenSidebar={setOpenSidebar}
+              />
             </div>
 
             <div className="menu-hamburger">
