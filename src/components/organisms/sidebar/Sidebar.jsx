@@ -9,7 +9,7 @@ const Sidebar = (props) => {
 
   return (
     <Main>
-      <Container>
+      <Container opensidebar={openSidebar}>
         <div className="logo-content">
           <div className="logo">
             <img src={v.logo} alt="logo" />
@@ -42,6 +42,46 @@ const Container = styled.div`
   padding-top: 20px;
   z-index: 100;
   height: 100%;
+
+  .logo-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+
+    .logo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+      transform: ${(props) => (props.opensidebar ? `scale(0.7)` : `scale(1.5)`)}  rotate(${(props) => props.theme.logorotate});
+
+      img{
+        width:100%;
+        animation: flotar 1.7s ease-in-out infinite alternate;
+      }
+    }
+  }
+
+  h2{
+    display: ${(props) => (props.opensidebar ? `block` : `none`)}
+  }
+  
+  @keyframes flotar {
+    0%{
+      transform: translate(0,0px);
+    }
+
+    50%{
+      transform: translate(0,4px);
+    }
+
+    100%{
+      transform: translate(0,-0px);
+    }
+  }
 `;
 
 const Divider = styled.div`
