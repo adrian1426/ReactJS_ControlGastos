@@ -8,22 +8,25 @@ const Sidebar = (props) => {
   const { openSidebar, setOpenSidebar } = props;
 
   return (
-    <Main>
-      <Container opensidebar={openSidebar}>
+    <Main opensidebar={openSidebar}>
+      <span className='sidebar-button' onClick={() => setOpenSidebar(!openSidebar)}>
+        {<v.iconoflechaderecha />}
+      </span>
+
+      <Container opensidebar={openSidebar} className={openSidebar ? "opened" : ""}>
         <div className="logo-content">
           <div className="logo">
             <img src={v.logo} alt="logo" />
           </div>
+          <h2>Cerdito</h2>
         </div>
-
-        <h2>Cerdito</h2>
 
         {
           LinksArray.map((link) => (
             <div key={link.label} className={openSidebar ? "LinkContainer active" : "LinkContainer"}>
               <NavLink to={link.to} className={({ isActive }) => `Link${isActive ? ' active' : ''}`}>
                 <div className="link-icon">{<link.icon />}</div>
-                <span>{link.label}</span>
+                {openSidebar && <span>{link.label}</span>}
               </NavLink>
             </div>
           ))
@@ -35,15 +38,42 @@ const Sidebar = (props) => {
   );
 };
 
-const Main = styled.div``;
+const Main = styled.div`
+  .sidebar-button{
+    position: fixed;
+    top: 70px;
+    left: 42px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: ${(props) => props.theme.bgtgderecha};
+    box-shadow: 0 0 4px ${(props) => props.theme.bg3},
+      0 0 7px ${(props) => props.theme.bg};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+    transform: ${({ opensidebar }) =>
+    opensidebar ? `translateX(162px) rotate(3.142rad)` : `initial`};
+    color: ${(props) => props.theme.text};
+  }
+`;
 
 const Container = styled.div`
   color: ${(props) => props.theme.text};
   background: ${(props) => props.theme.bg};
   position: fixed;
   padding-top: 20px;
-  z-index: 100;
+  z-index: 1;
   height: 100%;
+  width: 65px;
+  transition: 0.3s ease-in-out;
+
+  &.opened{
+    width: 220px;
+  }
 
   .logo-content{
     display: flex;
