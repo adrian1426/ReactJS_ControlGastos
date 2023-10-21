@@ -1,8 +1,9 @@
 import Proptypes from 'prop-types';
 import styled from "styled-components";
 import { v } from '../../../styles/variables';
-import { LinksArray } from '../../../utils/dataStatic';
+import { LinksArray, SecondarylinksArray } from '../../../utils/dataStatic';
 import { NavLink } from 'react-router-dom';
+import SidebarCard from './SidebarCard';
 
 const Sidebar = (props) => {
   const { openSidebar, setOpenSidebar } = props;
@@ -33,6 +34,21 @@ const Sidebar = (props) => {
         }
 
         <Divider />
+
+        {
+          SecondarylinksArray.map((link) => (
+            <div key={link.label} className={openSidebar ? "LinkContainer active" : "LinkContainer"}>
+              <NavLink to={link.to} className={({ isActive }) => `Link${isActive ? ' active' : ''}`}>
+                <div className="link-icon">{<link.icon />}</div>
+                {openSidebar && <span>{link.label}</span>}
+              </NavLink>
+            </div>
+          ))
+        }
+
+        <Divider />
+
+        {openSidebar && <SidebarCard />}
       </Container>
     </Main>
   );
@@ -70,6 +86,17 @@ const Container = styled.div`
   height: 100%;
   width: 65px;
   transition: 0.3s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colorScroll};
+    border-radius: 10px;
+  }
 
   &.opened{
     width: 220px;

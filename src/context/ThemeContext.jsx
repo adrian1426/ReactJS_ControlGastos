@@ -6,7 +6,7 @@ import { Dark, Light } from '../styles/themes';
 export const ThemeContext = createContext(null);
 
 export const ThemeProvider = (props) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const { children } = props;
 
   const themeSelected = theme === 'light' ? Light : Dark;
