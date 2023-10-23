@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AuthContextProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import AppRoutes from "./routers/AppRoutes";
@@ -9,28 +10,35 @@ import Menu from './components/organisms/menu/Menu';
 
 function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const location = useLocation();
 
   return (
     <>
       <ThemeProvider>
         <AuthContextProvider>
-          <Container className={openSidebar ? 'opened' : ''}>
-            <div className="sidebar">
-              <Sidebar
-                openSidebar={openSidebar}
-                setOpenSidebar={setOpenSidebar}
-              />
-            </div>
+          {
+            location.pathname !== "/login" ?
+              (
+                <Container className={openSidebar ? 'opened' : ''}>
+                  <div className="sidebar">
+                    <Sidebar
+                      openSidebar={openSidebar}
+                      setOpenSidebar={setOpenSidebar}
+                    />
+                  </div>
 
-            <div className="menu-hamburger">
-              <Menu />
-            </div>
+                  <div className="menu-hamburger">
+                    <Menu />
+                  </div>
 
-            <Body>
-              <AppRoutes />
-            </Body>
+                  <Body>
+                    <AppRoutes />
+                  </Body>
 
-          </Container>
+                </Container>
+              ) :
+              (<AppRoutes />)
+          }
         </AuthContextProvider>
       </ThemeProvider>
     </>

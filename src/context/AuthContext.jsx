@@ -29,7 +29,7 @@ export const AuthContextProvider = (props) => {
           setUser(null);
         } else {
           setUser(session?.user.user_metadata);
-          insertUsuario(session?.user.user_metadata, session?.user.id);
+          await insertUsuario(session?.user.user_metadata, session?.user.id);
         }
       }
 
