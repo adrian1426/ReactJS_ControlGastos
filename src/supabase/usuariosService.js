@@ -1,12 +1,11 @@
 import { supabase } from "./supabase.config";
 
-async function getIdAuthSupabase() {
-  const { data: session } = await supabase.auth.getSession();
+export const addUser = async (user) => {
+  try {
+    const { data } = await supabase.from("usuarios").insert(user).select();
 
-  if (session) {
-    const { user } = session;
-    const idAuthSupabase = user.id;
-
-    return idAuthSupabase;
+    return data;
+  } catch (error) {
+    return error;
   }
-}
+};
