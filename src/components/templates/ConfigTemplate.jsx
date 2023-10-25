@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import Header from "../organisms/header/Header";
 
 const ConfigTemplate = () => {
   return (
     <Container>
-      <header className="header">header</header>
+      <header className="header">
+        <Header />
+      </header>
 
       <section className="area1">
         area1
