@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { UserAuthContext } from "../../../context/AuthContext";
 import ButtonCircle from "../../molecules/ButtonCircle";
 import { v } from "../../../styles/variables";
+import MenuDropdown from "../../molecules/MenuDropdown";
+import { DesplegableUser } from "../../../utils/dataStatic";
 
 const User = () => {
   const { user: userData } = UserAuthContext();
@@ -22,6 +24,11 @@ const User = () => {
         translateY="-12px"
       />
       <span className="name">{userData.name}</span>
+
+      <MenuDropdown
+        desplegableUser={DesplegableUser}
+        top="62px"
+      />
     </Container>
   );
 };
