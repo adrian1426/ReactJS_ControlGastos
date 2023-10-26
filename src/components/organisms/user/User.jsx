@@ -5,10 +5,18 @@ import ButtonCircle from "../../molecules/ButtonCircle";
 import { v } from "../../../styles/variables";
 import MenuDropdown from "../../molecules/MenuDropdown";
 import { DesplegableUser } from "../../../utils/dataStatic";
+import { useAuthStore } from '../../../store/AuthStore';
 
 const User = (props) => {
   const { openMenu, setOpenMenu } = props;
   const { user: userData } = UserAuthContext();
+  const { signOut } = useAuthStore();
+
+  const actionByType = async (type) => {
+    if (type === "cerrarsesion") {
+      await signOut();
+    }
+  }
 
   return (
     <Container onClick={() => setOpenMenu(!openMenu)}>
@@ -32,6 +40,7 @@ const User = (props) => {
           <MenuDropdown
             desplegableUser={DesplegableUser}
             top="62px"
+            actions={actionByType}
           />
         )
       }

@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Icon from '../atoms/Icon';
 
 const MenuItem = (props) => {
-  const { item } = props;
+  const { item, onClick } = props;
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Icon><item.icono /></Icon>
       <span>{item.text}</span>
     </Container>
@@ -32,7 +32,8 @@ const Container = styled.div`
 `;
 
 MenuItem.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  onClick: PropTypes.func
 };
 
 export default MenuItem;

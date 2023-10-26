@@ -4,14 +4,14 @@ import MenuItem from './MenuItem';
 import { v } from '../../styles/variables';
 
 const MenuDropdown = (props) => {
-  const { desplegableUser, top } = props;
+  const { desplegableUser, top, actions } = props;
 
   return (
     <Container top={top}>
       {
         desplegableUser.map((item) => {
           return (
-            <MenuItem key={item.text} item={item} />
+            <MenuItem key={item.text} item={item} onClick={() => actions(item.tipo)} />
           )
         })
       }
@@ -32,7 +32,8 @@ const Container = styled.div`
 
 MenuDropdown.propTypes = {
   desplegableUser: PropTypes.array,
-  top: PropTypes.string
+  top: PropTypes.string,
+  actions: PropTypes.func
 };
 
 export default MenuDropdown;
