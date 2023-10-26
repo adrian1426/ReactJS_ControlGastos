@@ -3,18 +3,18 @@ import HeaderContainer from "../../atoms/HeaderContainer";
 import User from "../user/User";
 
 const Header = (props) => {
-  const { state, setState } = props;
+  const { openMenu, setOpenMenu } = props;
 
   return (
     <HeaderContainer>
-      <User {...{ state, setState }} />
+      <User {...{ openMenu, setOpenMenu }} />
     </HeaderContainer>
   );
 };
 
 Header.propTypes = {
-  state: PropTypes.object,
-  setState: PropTypes.func
+  openMenu: PropTypes.bool,
+  setOpenMenu: PropTypes.func
 };
 
 export default Header;

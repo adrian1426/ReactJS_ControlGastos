@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { UserAuthContext } from "../../../context/AuthContext";
 import ButtonCircle from "../../molecules/ButtonCircle";
@@ -5,11 +6,12 @@ import { v } from "../../../styles/variables";
 import MenuDropdown from "../../molecules/MenuDropdown";
 import { DesplegableUser } from "../../../utils/dataStatic";
 
-const User = () => {
+const User = (props) => {
+  const { openMenu, setOpenMenu } = props;
   const { user: userData } = UserAuthContext();
 
   return (
-    <Container>
+    <Container onClick={() => setOpenMenu(!openMenu)}>
       <div className="imgContainer">
         <img src={userData.picture} alt="picture" />
       </div>
@@ -25,10 +27,14 @@ const User = () => {
       />
       <span className="name">{userData.name}</span>
 
-      <MenuDropdown
-        desplegableUser={DesplegableUser}
-        top="62px"
-      />
+      {
+        openMenu && (
+          <MenuDropdown
+            desplegableUser={DesplegableUser}
+            top="62px"
+          />
+        )
+      }
     </Container>
   );
 };
@@ -77,5 +83,10 @@ const Container = styled.div`
     word-wrap: break-word;
   }
 `;
+
+User.propTypes = {
+  openMenu: PropTypes.bool,
+  setOpenMenu: PropTypes.func
+};
 
 export default User;

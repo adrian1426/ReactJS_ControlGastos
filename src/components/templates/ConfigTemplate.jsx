@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import styled from "styled-components";
 import Header from "../organisms/header/Header";
 
 const ConfigTemplate = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <Container>
       <header className="header">
-        <Header />
+        <Header {...{ openMenu, setOpenMenu }} />
       </header>
 
       <section className="area1">
