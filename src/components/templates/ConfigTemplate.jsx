@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import styled from "styled-components";
 import Header from "../organisms/header/Header";
+import Selector from '../organisms/selectores/Selector';
+import { v } from '../../styles/variables';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [paises, setPaises] = useState([]);
 
   return (
     <Container>
@@ -12,11 +15,14 @@ const ConfigTemplate = () => {
       </header>
 
       <section className="area1">
-        area1
+        <h1>Ajustes</h1>
       </section>
 
       <section className="area2">
-        area2
+        <ContentCard>
+          <span>Moneda:</span>
+          <Selector paises={paises} color={v.colorselector} />
+        </ContentCard>
       </section>
 
       <section className="main">
@@ -60,6 +66,16 @@ const Container = styled.div`
     grid-area: main;
     background-color: rgba(179,46,241,0.14);
   }
+`;
+
+const ContentCard = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+  justify-content: center;
 `;
 
 export default ConfigTemplate;
