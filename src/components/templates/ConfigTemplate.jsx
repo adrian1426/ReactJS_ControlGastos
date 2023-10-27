@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "../organisms/header/Header";
 import Selector from '../organisms/selectores/Selector';
 import { v } from '../../styles/variables';
+import Paises from '../organisms/paises/Paises';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -22,6 +23,7 @@ const ConfigTemplate = () => {
         <ContentCard>
           <span>Moneda:</span>
           <Selector paises={paises} color={v.colorselector} />
+          <Paises />
         </ContentCard>
       </section>
 
