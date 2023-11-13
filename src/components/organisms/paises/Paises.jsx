@@ -57,7 +57,38 @@ const Paises = (props) => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-top: 15px;
+  position: absolute;
+  top: 88%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: ${({ theme }) => theme.bgtotal};
+  border-radius: 10px;  
+  border: 3px solid #3a3a3a;
+  padding: 10px;
+  gap: 10px;
+  color: ${({ theme }) => theme.text};
+
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: inherit;
+
+    .iconClose{
+      cursor: pointer;
+      font-size: 25px;
+      transition: all 0.2s;
+
+      &:hover{
+        color: ${v.colorselector};
+        transform: scale(1.2);
+      }
+    }
+  }
+`;
 
 const ItemContainer = styled.section`
   gap: 10px;

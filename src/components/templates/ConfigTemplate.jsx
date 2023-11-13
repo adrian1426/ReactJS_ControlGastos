@@ -25,9 +25,11 @@ const ConfigTemplate = () => {
         <ContentCard>
           <span>Moneda:</span>
           <Selector
+            openSelector={openPaises}
             paises={paises}
             color={v.colorselector}
             action={() => setOpenPaises(!openPaises)}
+            text1={`${dataSelect.symbol} ${dataSelect.countryName}`}
           />
           {
             openPaises && (
@@ -41,7 +43,6 @@ const ConfigTemplate = () => {
       </section>
 
       <section className="main">
-        main
       </section>
     </Container>
   );
