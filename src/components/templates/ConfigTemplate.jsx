@@ -7,6 +7,8 @@ import Paises from '../organisms/paises/Paises';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [dataSelect, setDataSelect] = useState([]);
+  const [openPaises, setOpenPaises] = useState(false);
   const [paises, setPaises] = useState([]);
 
   return (
@@ -22,8 +24,19 @@ const ConfigTemplate = () => {
       <section className="area2">
         <ContentCard>
           <span>Moneda:</span>
-          <Selector paises={paises} color={v.colorselector} />
-          <Paises />
+          <Selector
+            paises={paises}
+            color={v.colorselector}
+            action={() => setOpenPaises(!openPaises)}
+          />
+          {
+            openPaises && (
+              <Paises
+                setSelector={setDataSelect}
+                setOpenPaises={() => setOpenPaises(!openPaises)}
+              />
+            )
+          }
         </ContentCard>
       </section>
 
