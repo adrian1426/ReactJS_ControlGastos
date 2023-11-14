@@ -5,6 +5,7 @@ import { v } from "../../../styles/variables";
 import InputSearcher from "../../molecules/InputSearcher";
 import iso from 'iso-country-currency';
 import { capitalize } from "../../../utils/conversiones";
+import { device } from '../../../styles/breakpoints';
 
 const Paises = (props) => {
   const { setSelector, setOpenPaises } = props;
@@ -70,6 +71,10 @@ const Container = styled.div`
   padding: 10px;
   gap: 10px;
   color: ${({ theme }) => theme.text};
+
+  @media ${() => device.tablet} {
+    width: 400px;
+  }
 
   .header{
     display: flex;
