@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import AppRoutes from "./routers/AppRoutes";
@@ -7,10 +8,22 @@ import styled from 'styled-components';
 import Sidebar from './components/organisms/sidebar/Sidebar';
 import { device } from './styles/breakpoints';
 import Menu from './components/organisms/menu/Menu';
+import { useQuery } from '@tanstack/react-query';
+import { useUserStore } from './store/UserStore';
 
 function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
   const location = useLocation();
+  const { mostrarUsuario } = useUserStore();
+  const { isLoading, isError } = useQuery({ queryKey: ['mostrar-usuarios'], queryFn: () => mostrarUsuario() });
+
+  if (isLoading) {
+    return <h1>Cargando data de usuario...</h1>
+  }
+
+  if (isError) {
+    return <h1>Ocurrió un error</h1>
+  }
 
   return (
     <>
@@ -39,6 +52,7 @@ function App() {
               ) :
               (<AppRoutes />)
           }
+          <ReactQueryDevtools initialIsOpen={true} />
         </AuthContextProvider>
       </ThemeProvider>
     </>

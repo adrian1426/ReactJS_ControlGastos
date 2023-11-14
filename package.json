@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.38.1",
+    "@tanstack/react-query": "^5.8.3",
+    "@tanstack/react-query-devtools": "^5.8.3",
     "iso-country-currency": "^0.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

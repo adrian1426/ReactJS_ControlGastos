@@ -4,12 +4,18 @@ import Header from "../organisms/header/Header";
 import Selector from '../organisms/selectores/Selector';
 import { v } from '../../styles/variables';
 import Paises from '../organisms/paises/Paises';
+import { useUserStore } from '../../store/UserStore';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [dataSelect, setDataSelect] = useState([]);
   const [openPaises, setOpenPaises] = useState(false);
   const [paises, setPaises] = useState([]);
+  const { dataUsuarios } = useUserStore();
+
+  const infoMonedo = dataSelect.symbol ?
+    `${dataSelect.symbol} ${dataSelect.countryName}` :
+    `${dataUsuarios.moneda} ${dataUsuarios.pais}`;
 
   return (
     <Container>
@@ -29,7 +35,7 @@ const ConfigTemplate = () => {
             paises={paises}
             color={v.colorselector}
             action={() => setOpenPaises(!openPaises)}
-            text1={`${dataSelect.symbol} ${dataSelect.countryName}`}
+            text1={infoMonedo}
           />
           {
             openPaises && (

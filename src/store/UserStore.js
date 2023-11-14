@@ -1,15 +1,17 @@
 import { create } from "zustand";
 import { mostrarUsuarios } from "../supabase/usuariosService";
 
-export const useUserStore = create((get, set) => ({
+export const useUserStore = create((set, get) => ({
   dataUsuarios: [],
   mostrarUsuario: async () => {
-    const data = await mostrarUsuarios();
+    const response = await mostrarUsuarios();
 
-    set({
-      dataUsuarios: data
-    });
+    set({ dataUsuarios: response });
 
-    return data;
+    if (response) {
+      return response
+    } else {
+      return [];
+    }
   }
 }))
