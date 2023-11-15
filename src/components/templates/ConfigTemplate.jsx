@@ -5,17 +5,25 @@ import Selector from '../organisms/selectores/Selector';
 import { v } from '../../styles/variables';
 import Paises from '../organisms/paises/Paises';
 import { useUserStore } from '../../store/UserStore';
+import GenericList from '../molecules/GenericList';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [dataSelect, setDataSelect] = useState([]);
   const [openPaises, setOpenPaises] = useState(false);
-  const [paises, setPaises] = useState([]);
+  const [openTheme, setOpenTheme] = useState(false);
+  const [selectTheme, setSelectTheme] = useState([]);
   const { dataUsuarios } = useUserStore();
 
   const infoMonedo = dataSelect.symbol ?
     `${dataSelect.symbol} ${dataSelect.countryName}` :
     `${dataUsuarios.moneda} ${dataUsuarios.pais}`;
+
+  const iconobd = dataUsuarios.tema === "0" ? "🌞" : "🌚";
+  const temabd = dataUsuarios.tema === "0" ? "light" : "dark";
+  const temainicial = selectTheme.tema ? selectTheme.tema : temabd;
+  const iconInit = selectTheme.icono ? selectTheme.icono : iconobd;
+  const temaSeleccionado = iconInit + " " + temainicial;
 
   return (
     <Container>
@@ -32,7 +40,6 @@ const ConfigTemplate = () => {
           <span>Moneda:</span>
           <Selector
             openSelector={openPaises}
-            paises={paises}
             color={v.colorselector}
             action={() => setOpenPaises(!openPaises)}
             text1={infoMonedo}
@@ -43,6 +50,21 @@ const ConfigTemplate = () => {
                 setSelector={setDataSelect}
                 setOpenPaises={() => setOpenPaises(!openPaises)}
               />
+            )
+          }
+        </ContentCard>
+
+        <ContentCard>
+          <span>Tema:</span>
+          <Selector
+            color={v.colorselector}
+            text1={temaSeleccionado}
+            openSelector={openTheme}
+            action={() => setOpenTheme(!openTheme)}
+          />
+          {
+            openTheme && (
+              <GenericList />
             )
           }
         </ContentCard>
@@ -82,6 +104,9 @@ const Container = styled.div`
     background-color: rgba(77,237,106,0.14);
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    gap: 30px;
   }
 
   .main{
