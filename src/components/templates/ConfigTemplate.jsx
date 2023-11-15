@@ -6,13 +6,14 @@ import { v } from '../../styles/variables';
 import Paises from '../organisms/paises/Paises';
 import { useUserStore } from '../../store/UserStore';
 import GenericList from '../molecules/GenericList';
+import { TemasData } from '../../utils/dataStatic';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [dataSelect, setDataSelect] = useState([]);
   const [openPaises, setOpenPaises] = useState(false);
   const [openTheme, setOpenTheme] = useState(false);
-  const [selectTheme, setSelectTheme] = useState([]);
+  const [selectTheme, setSelectTheme] = useState({});
   const { dataUsuarios } = useUserStore();
 
   const infoMonedo = dataSelect.symbol ?
@@ -64,7 +65,11 @@ const ConfigTemplate = () => {
           />
           {
             openTheme && (
-              <GenericList />
+              <GenericList
+                data={TemasData}
+                actionClose={() => setOpenTheme(!openTheme)}
+                setSelectTheme={setSelectTheme}
+              />
             )
           }
         </ContentCard>

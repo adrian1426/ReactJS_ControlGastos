@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
-import { v } from "../../../styles/variables";
 import InputSearcher from "../../molecules/InputSearcher";
 import iso from 'iso-country-currency';
 import { capitalize } from "../../../utils/conversiones";
 import { device } from '../../../styles/breakpoints';
+import IconClose from '../../atoms/IconClose';
 
 const Paises = (props) => {
   const { setSelector, setOpenPaises } = props;
@@ -30,12 +30,9 @@ const Paises = (props) => {
     <Container>
       <header className="header">
         <span>busca tu pais</span>
-        <span
-          className="iconClose"
-          onClick={setOpenPaises}
-        >
-          {<v.iconocerrar />}
-        </span>
+        <IconClose
+          action={setOpenPaises}
+        />
       </header>
       <InputSearcher
         placeholder="buscar..."
@@ -71,6 +68,7 @@ const Container = styled.div`
   padding: 10px;
   gap: 10px;
   color: ${({ theme }) => theme.text};
+  z-index: 1;
 
   @media ${() => device.tablet} {
     width: 400px;
@@ -81,17 +79,6 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: inherit;
-
-    .iconClose{
-      cursor: pointer;
-      font-size: 25px;
-      transition: all 0.2s;
-
-      &:hover{
-        color: ${v.colorselector};
-        transform: scale(1.2);
-      }
-    }
   }
 `;
 
