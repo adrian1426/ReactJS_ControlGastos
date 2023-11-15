@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { device } from "../../styles/breakpoints";
@@ -5,11 +7,15 @@ import IconClose from "../atoms/IconClose";
 
 const GenericList = (props) => {
   const { data = [], actionClose, setSelectTheme } = props;
+  const { setTheme } = useContext(ThemeContext);
 
   const selectTheme = (theme) => {
     setSelectTheme({
       icono: theme.icono, tema: theme.descripcion
     });
+
+    setTheme(theme.descripcion);
+
     actionClose();
   }
 
