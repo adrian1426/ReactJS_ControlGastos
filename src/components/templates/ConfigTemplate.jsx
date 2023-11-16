@@ -100,9 +100,6 @@ const ConfigTemplate = () => {
         </Button>
 
       </section>
-
-      <section className="main">
-      </section>
     </Container>
   );
 };
@@ -114,7 +111,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.bgtotal};
   color: ${({ theme }) => theme.text};
   display: grid;
-  grid-template: "header" 100px "area1" 100px "area2" 50px "main" auto;
+  grid-template: "header" 100px "area1" 100px "area2" auto;
 
   .header{
     grid-area: header;
@@ -139,11 +136,6 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: start;
     gap: 30px;
-  }
-
-  .main{
-    grid-area: main;
-    background-color: rgba(179,46,241,0.14);
   }
 `;
 
