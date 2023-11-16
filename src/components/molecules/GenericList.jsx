@@ -53,6 +53,7 @@ const Container = styled.div`
   padding: 10px;
   border-radius: 10px;
   gap: 10px;
+  z-index: 3;
 
   @media ${device.tablet}{
     width: 400px;

@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { getIdAuthSupabase } from "./session";
 import { supabase } from "./supabase.config";
 
@@ -27,3 +28,23 @@ export const mostrarUsuarios = async () => {
     // alert(error.error_description || error.message + "MostrarUsuarios");
   }
 };
+
+export async function editarTemaMonedaUser(user) {
+  try {
+    const { error } = await supabase.from("usuarios").update(user).eq("id", user.id);
+
+    if (error) {
+      alert("Error al editar usuarios", error);
+    }
+
+    Swal.fire({
+      icon: "success",
+      title: "Datos modificados",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+  } catch (error) {
+    alert(error.error_description || error.message + "EditarTemaMonedaUser");
+  }
+}

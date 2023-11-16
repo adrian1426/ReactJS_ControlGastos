@@ -28,6 +28,7 @@ const ButtonStyled = styled.button`
   cursor: pointer;
   gap: 10px;
   background-color: initial;
+  z-index: 2;
 
   .btn{
     background: ${(props) => props.bgcolor};

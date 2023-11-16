@@ -7,6 +7,7 @@ import Paises from '../organisms/paises/Paises';
 import { useUserStore } from '../../store/UserStore';
 import GenericList from '../molecules/GenericList';
 import { TemasData } from '../../utils/dataStatic';
+import Button from '../molecules/Button';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -14,7 +15,10 @@ const ConfigTemplate = () => {
   const [openPaises, setOpenPaises] = useState(false);
   const [openTheme, setOpenTheme] = useState(false);
   const [selectTheme, setSelectTheme] = useState({});
-  const { dataUsuarios } = useUserStore();
+  const { dataUsuarios, editartemamonedauser } = useUserStore();
+
+  const moneda = dataSelect.symbol ? dataSelect.symbol : dataUsuarios.moneda;
+  const pais = dataSelect.countryName ? dataSelect.countryName : dataUsuarios.pais;
 
   const infoMonedo = dataSelect.symbol ?
     `${dataSelect.symbol} ${dataSelect.countryName}` :
@@ -25,6 +29,19 @@ const ConfigTemplate = () => {
   const temainicial = selectTheme.tema ? selectTheme.tema : temabd;
   const iconInit = selectTheme.icono ? selectTheme.icono : iconobd;
   const temaSeleccionado = iconInit + " " + temainicial;
+
+  const editarUser = async () => {
+    const themeElegido = selectTheme.tema === "light" ? "0" : "1";
+
+    const user = {
+      tema: themeElegido,
+      moneda: moneda,
+      pais: pais,
+      id: dataUsuarios.id,
+    };
+
+    await editartemamonedauser(user);
+  };
 
   return (
     <Container>
@@ -73,6 +90,15 @@ const ConfigTemplate = () => {
             )
           }
         </ContentCard>
+
+        <Button
+          bgcolor={v.colorselector}
+          icon={<v.iconoguardar />}
+          functionClick={editarUser}
+        >
+          Guardar
+        </Button>
+
       </section>
 
       <section className="main">
@@ -102,6 +128,7 @@ const Container = styled.div`
     background-color: rgba(229,67,26,0.14);
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .area2{

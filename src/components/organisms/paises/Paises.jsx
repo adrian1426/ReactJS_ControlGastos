@@ -68,7 +68,7 @@ const Container = styled.div`
   padding: 10px;
   gap: 10px;
   color: ${({ theme }) => theme.text};
-  z-index: 1;
+  z-index: 3;
 
   @media ${() => device.tablet} {
     width: 400px;
