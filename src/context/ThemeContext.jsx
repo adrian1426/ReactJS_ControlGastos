@@ -8,7 +8,7 @@ export const ThemeContext = createContext(null);
 
 export const ThemeProvider = (props) => {
   const { dataUsuarios } = useUserStore();
-  const temabd = dataUsuarios.tema === "0" ? "light" : "dark";
+  const temabd = dataUsuarios?.tema === "0" ? "light" : "dark";
   const [theme, setTheme] = useState(temabd);
   const { children } = props;
 

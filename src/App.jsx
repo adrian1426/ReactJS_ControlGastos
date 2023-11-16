@@ -10,6 +10,7 @@ import { device } from './styles/breakpoints';
 import Menu from './components/organisms/menu/Menu';
 import { useQuery } from '@tanstack/react-query';
 import { useUserStore } from './store/UserStore';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -50,7 +51,7 @@ function App() {
 
                 </Container>
               ) :
-              (<AppRoutes />)
+              (<LoginPage />)
           }
           <ReactQueryDevtools initialIsOpen={true} />
         </AuthContextProvider>
