@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage';
 import ProtectedRoute from './ProtectedRoute';
 import { UserAuthContext } from '../context/AuthContext';
 import ConfigPage from '../pages/ConfigPage';
+import CategoriaPage from '../pages/CategoriaPage';
 
 const AppRoutes = () => {
   const { user } = UserAuthContext();
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Route element={<ProtectedRoute user={user} redirectTo='/login' />}>
         <Route path='/' element={<HomePage />} />
         <Route path='/configurar' element={<ConfigPage />} />
+        <Route path='/categorias' element={<CategoriaPage />} />
       </Route>
     </Routes>
   );
