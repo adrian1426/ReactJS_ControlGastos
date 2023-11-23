@@ -3,9 +3,11 @@ import styled from "styled-components";
 import Header from "../organisms/header/Header";
 import { ContentFilters } from '../atoms/ContentFilters';
 import ButtonDropDown from '../molecules/ButtonDropDown';
+import { useOperaciones } from '../../store/OperacionStore';
 
 const CategoriaTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { tituloBtn, colorCategoria, bgCategoria } = useOperaciones();
 
   return (
     <Container>
@@ -16,7 +18,9 @@ const CategoriaTemplate = () => {
       <section className="tipo">
         <ContentFilters>
           <ButtonDropDown
-            bgColor="red"
+            textColor={colorCategoria}
+            bgColor={bgCategoria}
+            text={tituloBtn}
           />
         </ContentFilters>
       </section>

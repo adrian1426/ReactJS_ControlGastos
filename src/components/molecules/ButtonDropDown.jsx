@@ -6,7 +6,11 @@ const ButtonDropDown = (props) => {
   const { text, bgColor, textColor, action } = props;
 
   return (
-    <Container $bgColor={bgColor} $textColor={textColor}>
+    <Container
+      $bgColor={bgColor}
+      $textColor={textColor}
+      onClick={action}
+    >
       <span className='containerText'>
         {<v.iconoFlechabajo />}
         <h6>{text}</h6>
@@ -21,8 +25,21 @@ const Container = styled.div`
   color: ${(props) => props.$textColor};
   font-weight: 500;
   font-size: 23px;
-  padding: 0.9rem 2.3rem;
+  padding: 0.5rem 2.3rem;
   border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+
+  .containerText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover{
+    background-color: rgba(77,77,77,0.5);
+  }
 `;
 
 ButtonDropDown.propTypes = {
