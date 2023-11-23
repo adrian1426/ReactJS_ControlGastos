@@ -7,20 +7,18 @@ export const useOperaciones = create((set, get) => ({
   colorCategoria: v.colorIngresos,
   bgCategoria: v.colorbgingresos,
   setTipo: (tipoCategoria) => {
-    set({ tipo: tipoCategoria });
-
-    const { tipo } = get();
+    set({ tipo: tipoCategoria.tipo });
 
     set({
-      tituloBtn: tipo === "i" ? "Categorias ingresos" : "Categorias gastos"
+      tituloBtn: tipoCategoria.text
     });
 
     set({
-      colorCategoria: tipo === "i" ? v.colorIngresos : v.colorGastos
+      colorCategoria: tipoCategoria.color
     });
 
     set({
-      bgCategoria: tipo === "i" ? v.colorbgingresos : v.colorbgGastos
+      bgCategoria: tipoCategoria.bgColor
     });
   }
 }));

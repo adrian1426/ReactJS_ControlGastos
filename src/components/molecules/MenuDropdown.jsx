@@ -11,7 +11,11 @@ const MenuDropdown = (props) => {
       {
         desplegableUser.map((item) => {
           return (
-            <MenuItem key={item.text} item={item} onClick={() => actions(item.tipo)} />
+            <MenuItem
+              key={item.text}
+              item={item}
+              onClick={() => actions(item)}
+            />
           )
         })
       }

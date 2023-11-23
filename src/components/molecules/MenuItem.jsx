@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Icon from '../atoms/Icon';
+import { ColorContent } from '../atoms/ColorContent';
 
 const MenuItem = (props) => {
   const { item, onClick } = props;
@@ -8,6 +9,7 @@ const MenuItem = (props) => {
   return (
     <Container onClick={onClick}>
       {item.icono && <Icon><item.icono /></Icon>}
+      <ColorContent $alto="12px" $ancho="12px" $color={item?.color} />
       <span>{item.text}</span>
     </Container>
   );
