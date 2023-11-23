@@ -7,7 +7,7 @@ const MenuItem = (props) => {
 
   return (
     <Container onClick={onClick}>
-      <Icon><item.icono /></Icon>
+      {item.icono && <Icon><item.icono /></Icon>}
       <span>{item.text}</span>
     </Container>
   );

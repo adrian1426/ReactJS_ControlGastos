@@ -4,10 +4,16 @@ import Header from "../organisms/header/Header";
 import { ContentFilters } from '../atoms/ContentFilters';
 import ButtonDropDown from '../molecules/ButtonDropDown';
 import { useOperaciones } from '../../store/OperacionStore';
+import MenuDropdown from '../molecules/MenuDropdown';
+import { DataDesplegableTipo } from '../../utils/dataStatic';
 
 const CategoriaTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { tituloBtn, colorCategoria, bgCategoria } = useOperaciones();
+  const { tituloBtn, colorCategoria, bgCategoria, setTipo } = useOperaciones();
+
+  const cambiarTipoCategoria = (tipoCategoria) => {
+    setTipo(tipoCategoria);
+  };
 
   return (
     <Container>
@@ -21,6 +27,11 @@ const CategoriaTemplate = () => {
             textColor={colorCategoria}
             bgColor={bgCategoria}
             text={tituloBtn}
+          />
+          <MenuDropdown
+            desplegableUser={DataDesplegableTipo}
+            top="112%"
+            actions={cambiarTipoCategoria}
           />
         </ContentFilters>
       </section>
