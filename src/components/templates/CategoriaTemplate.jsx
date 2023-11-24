@@ -9,30 +9,44 @@ import { DataDesplegableTipo } from '../../utils/dataStatic';
 
 const CategoriaTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openCategorias, setOpenCategorias] = useState(false);
   const { tituloBtn, colorCategoria, bgCategoria, setTipo } = useOperaciones();
 
   const cambiarTipoCategoria = (tipoCategoria) => {
     setTipo(tipoCategoria);
+    setOpenCategorias(!openCategorias);
+  };
+
+  const cerrarDropDowns = () => {
+    setOpenCategorias(false);
+    setOpenMenu(false);
   };
 
   return (
-    <Container>
+    <Container onClick={cerrarDropDowns}>
       <header className="header">
         <Header {...{ openMenu, setOpenMenu }} />
       </header>
 
       <section className="tipo">
         <ContentFilters>
-          <ButtonDropDown
-            textColor={colorCategoria}
-            bgColor={bgCategoria}
-            text={tituloBtn}
-          />
-          <MenuDropdown
-            desplegableUser={DataDesplegableTipo}
-            top="112%"
-            actions={cambiarTipoCategoria}
-          />
+          <div onClick={(e) => e.stopPropagation()}>
+            <ButtonDropDown
+              textColor={colorCategoria}
+              bgColor={bgCategoria}
+              text={tituloBtn}
+              action={() => setOpenCategorias(!openCategorias)}
+            />
+            {
+              openCategorias && (
+                <MenuDropdown
+                  desplegableUser={DataDesplegableTipo}
+                  top="112%"
+                  actions={cambiarTipoCategoria}
+                />
+              )
+            }
+          </div>
         </ContentFilters>
       </section>
 

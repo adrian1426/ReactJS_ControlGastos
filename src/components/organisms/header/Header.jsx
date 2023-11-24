@@ -7,7 +7,9 @@ const Header = (props) => {
 
   return (
     <HeaderContainer>
-      <User {...{ openMenu, setOpenMenu }} />
+      <div onClick={(e) => e.stopPropagation()}>
+        <User {...{ openMenu, setOpenMenu }} />
+      </div>
     </HeaderContainer>
   );
 };
