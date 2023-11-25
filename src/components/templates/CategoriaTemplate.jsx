@@ -6,6 +6,8 @@ import ButtonDropDown from '../molecules/ButtonDropDown';
 import { useOperaciones } from '../../store/OperacionStore';
 import MenuDropdown from '../molecules/MenuDropdown';
 import { DataDesplegableTipo } from '../../utils/dataStatic';
+import BtnFiltro from '../molecules/BtnFiltro';
+import { v } from '../../styles/variables';
 
 const CategoriaTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -51,7 +53,13 @@ const CategoriaTemplate = () => {
       </section>
 
       <section className="area2">
-        area2
+        <ContentFiltro>
+          <BtnFiltro
+            bgColor={bgCategoria}
+            textColor={colorCategoria}
+            icon={<v.agregar />}
+          />
+        </ContentFiltro>
       </section>
 
       <section className="main">
@@ -89,12 +97,18 @@ const Container = styled.div`
     background-color: rgba(77,237,106,0.14);
     display: flex;
     align-items: center;
+    justify-content: end;
   }
 
   .main{
     grid-area: main;
     background-color: rgba(179,46,241,0.14);
   }
+`;
+
+const ContentFiltro = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 export default CategoriaTemplate;
