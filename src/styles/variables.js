@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { RiVipCrownFill } from "react-icons/ri";
 import { BiUserCircle } from "react-icons/bi";
 import { RiSettings3Line } from "react-icons/ri";
-import { MdExitToApp } from "react-icons/md";
+import { MdExitToApp, MdOutlineBorderAll } from "react-icons/md";
 import { FcPicture } from "react-icons/fc";
 import { CgMathPlus } from "react-icons/cg";
 import { TbBrandSupabase } from "react-icons/tb";
@@ -24,6 +24,8 @@ import { AiOutlineCalculator } from "react-icons/ai";
 import { BsCalendarCheck } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io"
 import fondo from "../assets/fondo1.svg";
+import { GrFormPrevious, GrCaretNext } from "react-icons/gr";
+
 export const v = {
   sidebarWidth: `300px`,
   sidebarWidthInitial: `10vw`,
@@ -82,4 +84,7 @@ export const v = {
   iconoflechaderecha: IoIosArrowForward,
   colorselector: "#BF94FF",
   rgbafondos: "rgba(210, 110, 249, 0.1)",
+  iconoprev: GrFormPrevious,
+  icononext: GrCaretNext,
+  iconotodos: MdOutlineBorderAll
 };

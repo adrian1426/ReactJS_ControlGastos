@@ -22,7 +22,7 @@ const CategoriaPage = () => {
 
   return (
     <Container>
-      <CategoriaTemplate />
+      <CategoriaTemplate dataCategorias={datacategoria} />
     </Container>
   );
 };

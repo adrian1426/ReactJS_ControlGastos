@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import Header from "../organisms/header/Header";
 import { ContentFilters } from '../atoms/ContentFilters';
@@ -8,8 +9,10 @@ import MenuDropdown from '../molecules/MenuDropdown';
 import { DataDesplegableTipo } from '../../utils/dataStatic';
 import BtnFiltro from '../molecules/BtnFiltro';
 import { v } from '../../styles/variables';
+import { TablaCategorias } from '../organisms/table/TablaCategorias';
 
-const CategoriaTemplate = () => {
+const CategoriaTemplate = (props) => {
+  const { dataCategorias } = props;
   const [openMenu, setOpenMenu] = useState(false);
   const [openCategorias, setOpenCategorias] = useState(false);
   const { tituloBtn, colorCategoria, bgCategoria, setTipo } = useOperaciones();
@@ -63,7 +66,9 @@ const CategoriaTemplate = () => {
       </section>
 
       <section className="main">
-        main
+        <TablaCategorias
+          data={dataCategorias}
+        />
       </section>
     </Container>
   );
@@ -110,5 +115,9 @@ const ContentFiltro = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
+CategoriaTemplate.propTypes = {
+  dataCategorias: PropTypes.array
+};
 
 export default CategoriaTemplate;
