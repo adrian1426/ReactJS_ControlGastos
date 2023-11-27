@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
     "@supabase/supabase-js": "^2.38.1",
     "@tanstack/react-query": "^5.8.3",
     "@tanstack/react-query-devtools": "^5.8.3",
+    "dayjs": "^1.11.10",
     "emoji-picker-react": "^4.5.16",
     "iso-country-currency": "^0.7.2",
     "react": "^18.2.0",

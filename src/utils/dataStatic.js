@@ -95,3 +95,18 @@ export const TemasData = [
 
   },
 ];
+
+export const DataDesplegableMovimientos = [
+  {
+    text: "Gastos",
+    color: v.colorGastos,
+    tipo: "g",
+    bgcolor: v.colorbgGastos,
+  },
+  {
+    text: "Ingresos",
+    color: v.colorIngresos,
+    tipo: "i",
+    bgcolor: v.colorbgingresos,
+  },
+];
