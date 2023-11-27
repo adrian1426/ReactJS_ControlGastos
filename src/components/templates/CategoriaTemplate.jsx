@@ -10,11 +10,13 @@ import { DataDesplegableTipo } from '../../utils/dataStatic';
 import BtnFiltro from '../molecules/BtnFiltro';
 import { v } from '../../styles/variables';
 import { TablaCategorias } from '../organisms/table/TablaCategorias';
+import { RegistrarCategorias } from '../organisms/formularios/RegistrarCategorias';
 
 const CategoriaTemplate = (props) => {
   const { dataCategorias } = props;
   const [openMenu, setOpenMenu] = useState(false);
   const [openCategorias, setOpenCategorias] = useState(false);
+  const [dataSelect, setDataSelect] = useState({});
   const { tituloBtn, colorCategoria, bgCategoria, setTipo } = useOperaciones();
 
   const cambiarTipoCategoria = (tipoCategoria) => {
@@ -32,6 +34,10 @@ const CategoriaTemplate = (props) => {
       <header className="header">
         <Header {...{ openMenu, setOpenMenu }} />
       </header>
+
+      <RegistrarCategorias
+        dataSelect={dataSelect}
+      />
 
       <section className="tipo">
         <ContentFilters>
