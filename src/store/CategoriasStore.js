@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { EditarCategorias, EliminarCategorias, InsertarCategorias, MostrarCategorias } from "../supabase/categoriasService";
+import { EditarCategorias, EliminarCategorias, EliminarCategoriasTodas, InsertarCategorias, MostrarCategorias } from "../supabase/categoriasService";
 
 export const useCategoriasStore = create((set, get) => ({
   datacategoria: [],
@@ -15,6 +15,11 @@ export const useCategoriasStore = create((set, get) => ({
   },
   eliminarCategoria: async (p) => {
     await EliminarCategorias(p);
+    const { mostrarCategorias } = get();
+    set(mostrarCategorias(p));
+  },
+  eliminarCategoriasTodas: async (p) => {
+    await EliminarCategoriasTodas(p);
     const { mostrarCategorias } = get();
     set(mostrarCategorias(p));
   },

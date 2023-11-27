@@ -8,6 +8,7 @@ import { useUserStore } from '../../store/UserStore';
 import GenericList from '../molecules/GenericList';
 import { TemasData } from '../../utils/dataStatic';
 import Button from '../molecules/Button';
+import { CardEliminarData } from '../organisms/CardEliminarData';
 
 const ConfigTemplate = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -98,6 +99,8 @@ const ConfigTemplate = () => {
         >
           Guardar
         </Button>
+
+        <CardEliminarData />
 
       </section>
     </Container>
