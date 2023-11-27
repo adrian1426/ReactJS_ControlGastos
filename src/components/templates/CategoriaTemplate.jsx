@@ -17,6 +17,8 @@ const CategoriaTemplate = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openCategorias, setOpenCategorias] = useState(false);
   const [dataSelect, setDataSelect] = useState({});
+  const [openRegistro, setOpenRegistro] = useState(false);
+  const [accionForm, setAccionForm] = useState("");
   const { tituloBtn, colorCategoria, bgCategoria, setTipo } = useOperaciones();
 
   const cambiarTipoCategoria = (tipoCategoria) => {
@@ -29,15 +31,26 @@ const CategoriaTemplate = (props) => {
     setOpenMenu(false);
   };
 
+  const nuevoRegistro = () => {
+    setOpenRegistro(true);
+    setAccionForm("Nuevo");
+    setDataSelect({});
+  };
+
   return (
     <Container onClick={cerrarDropDowns}>
       <header className="header">
         <Header {...{ openMenu, setOpenMenu }} />
       </header>
 
-      <RegistrarCategorias
-        dataSelect={dataSelect}
-      />
+      {
+        openRegistro && (
+          <RegistrarCategorias
+            dataSelect={dataSelect}
+            onClose={() => setOpenRegistro(false)}
+          />
+        )
+      }
 
       <section className="tipo">
         <ContentFilters>
@@ -67,6 +80,7 @@ const CategoriaTemplate = (props) => {
             bgColor={bgCategoria}
             textColor={colorCategoria}
             icon={<v.agregar />}
+            action={nuevoRegistro}
           />
         </ContentFiltro>
       </section>
@@ -74,6 +88,9 @@ const CategoriaTemplate = (props) => {
       <section className="main">
         <TablaCategorias
           data={dataCategorias}
+          SetopenRegistro={setOpenRegistro}
+          setdataSelect={setDataSelect}
+          setAccion={setAccionForm}
         />
       </section>
     </Container>
@@ -98,14 +115,14 @@ const Container = styled.div`
 
   .tipo{
     grid-area: tipo;
-    background-color: rgba(229,67,26,0.14);
+    /* background-color: rgba(229,67,26,0.14); */
     display: flex;
     align-items: center;
   }
 
   .area2{
     grid-area: area2;
-    background-color: rgba(77,237,106,0.14);
+    /* background-color: rgba(77,237,106,0.14); */
     display: flex;
     align-items: center;
     justify-content: end;
@@ -113,7 +130,7 @@ const Container = styled.div`
 
   .main{
     grid-area: main;
-    background-color: rgba(179,46,241,0.14);
+    /* background-color: rgba(179,46,241,0.14); */
   }
 `;
 

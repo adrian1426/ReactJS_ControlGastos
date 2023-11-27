@@ -3,13 +3,16 @@ import CategoriaTemplate from "../components/templates/CategoriaTemplate";
 import { useCategoriasStore } from "../store/CategoriasStore";
 import { useQuery } from "@tanstack/react-query";
 import { useUserStore } from "../store/UserStore";
+import { useOperaciones } from "../store/OperacionStore";
 
 const CategoriaPage = () => {
   const { dataUsuarios } = useUserStore();
   const { datacategoria, mostrarCategorias } = useCategoriasStore();
+  const { tipo } = useOperaciones();
+
   const { isLoading, error } = useQuery({
     queryKey: ['mostrar-categorias'],
-    queryFn: () => mostrarCategorias({ idusuario: dataUsuarios.id, tipo: "i" })
+    queryFn: () => mostrarCategorias({ idusuario: dataUsuarios.id, tipo: tipo })
   });
 
   if (isLoading) {
