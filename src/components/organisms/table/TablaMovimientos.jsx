@@ -11,7 +11,7 @@ export function TablaMovimientos({ data, SetopenRegistro, setdataSelect, setAcci
   const [pagina, setPagina] = useState(1);
   const [porPagina, setPorPagina] = useState(10);
 
-  const mx = data.length / porPagina;
+  const mx = data?.length / porPagina;
   const maximo = mx < 1 ? 1 : mx;
 
   const { eliminarMovimiento } = useMovimientosStore();

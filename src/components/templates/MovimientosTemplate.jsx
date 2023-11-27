@@ -70,24 +70,30 @@ export function MovimientosTemplate() {
     setdataSelect([]);
   }
 
-  useQuery(
-    [
-      "mostrar movimientos mes año",
-      { año: año, mes: mes, idusuario: idusuario, tipocategoria: tipo },
-    ],
-    () =>
-      mostrarMovimientos({
-        año: año,
-        mes: mes,
-        idusuario: idusuario,
-        tipocategoria: tipo,
-      })
+  useQuery({
+    queryKey:
+      [
+        "mostrar movimientos mes año",
+        { año: año, mes: mes, idusuario: idusuario, tipocategoria: tipo },
+      ],
+    queryFn: () => mostrarMovimientos({
+      año: año,
+      mes: mes,
+      idusuario: idusuario,
+      tipocategoria: tipo,
+    })
+  }
   );
 
-  useQuery(["mostrar cuentas"], () => mostrarCuentas({ idusuario: idusuario }));
+  useQuery({
+    queryKey: ["mostrar cuentas"],
+    queryFn: () => mostrarCuentas({ idusuario: idusuario })
+  });
 
-  useQuery(["mostrar categorias", { idusuario: idusuario, tipo: tipo }], () =>
-    mostrarCategorias({ idusuario: idusuario, tipo: tipo })
+  useQuery({
+    queryKey: ["mostrar-categorias", { idusuario: idusuario, tipo: tipo }],
+    queryFn: () => mostrarCategorias({ idusuario: idusuario, tipo: tipo })
+  }
   );
 
   return (

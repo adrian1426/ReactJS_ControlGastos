@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import { UserAuthContext } from '../context/AuthContext';
 import ConfigPage from '../pages/ConfigPage';
 import CategoriaPage from '../pages/CategoriaPage';
+import { MovimientosPage } from '../pages/MovimientosPage';
 
 const AppRoutes = () => {
   const { user } = UserAuthContext();
@@ -16,6 +17,7 @@ const AppRoutes = () => {
         <Route path='/' element={<HomePage />} />
         <Route path='/configurar' element={<ConfigPage />} />
         <Route path='/categorias' element={<CategoriaPage />} />
+        <Route path='/movimientos' element={<MovimientosPage />} />
       </Route>
     </Routes>
   );
