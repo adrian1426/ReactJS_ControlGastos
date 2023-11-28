@@ -3,15 +3,23 @@ import { EditarCategorias, EliminarCategorias, EliminarCategoriasTodas, Insertar
 
 export const useCategoriasStore = create((set, get) => ({
   datacategoria: [],
+  categoriaItemSelect: [],
+  parametros: {},
   mostrarCategorias: async (p) => {
     const response = await MostrarCategorias(p);
+    set({ parametros: p })
     set({ datacategoria: response });
+    set({ categoriaItemSelect: response[0] });
     return response;
+  },
+  selectCategoria: (p) => {
+    set({ categoriaItemSelect: p });
   },
   insertarCategorias: async (p) => {
     await InsertarCategorias(p);
     const { mostrarCategorias } = get();
-    set(mostrarCategorias(p));
+    const { parametros } = get();
+    set(mostrarCategorias(parametros));
   },
   eliminarCategoria: async (p) => {
     await EliminarCategorias(p);
