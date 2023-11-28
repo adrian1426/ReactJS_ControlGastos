@@ -1,15 +1,16 @@
 import { create } from "zustand";
-import { EliminarMovimientos, InsertarMovimientos, MostrarMovimientosPorMesAño } from "../supabase/movimientosService";
+import { EliminarMovimientos, InsertarMovimientos, MostrarMovimientosPorMesAño, RptMovimientosPorMesAño } from "../supabase/movimientosService";
 
 export const useMovimientosStore = create((set, get) => ({
   datamovimientos: [],
+  dataRptMovimientosAñoMes: [],
   totalMesAño: 0,
   totalMesAñoPagados: 0,
   totalMesAñoPendientes: 0,
   parametros: {},
   mostrarMovimientos: async (p) => {
     const response = await MostrarMovimientosPorMesAño(p);
-    set({ parametros: p })
+    set({ parametros: p });
     const { calcularTotales } = get();
     calcularTotales(response);
     set({ datamovimientos: response });
@@ -49,5 +50,10 @@ export const useMovimientosStore = create((set, get) => ({
     const { parametros } = get();
     const { mostrarMovimientos } = get();
     set(mostrarMovimientos(parametros));
+  },
+  rptMovimientosAñoMes: async (p) => {
+    const response = await RptMovimientosPorMesAño(p);
+    set({ dataRptMovimientosAñoMes: response });
+    return response;
   },
 }));

@@ -6,6 +6,7 @@ import { UserAuthContext } from '../context/AuthContext';
 import ConfigPage from '../pages/ConfigPage';
 import CategoriaPage from '../pages/CategoriaPage';
 import { MovimientosPage } from '../pages/MovimientosPage';
+import InformesPage from '../pages/InformesPage';
 
 const AppRoutes = () => {
   const { user } = UserAuthContext();
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         <Route path='/configurar' element={<ConfigPage />} />
         <Route path='/categorias' element={<CategoriaPage />} />
         <Route path='/movimientos' element={<MovimientosPage />} />
+        <Route path='/informes' element={<InformesPage />} />
       </Route>
     </Routes>
   );
